@@ -1,6 +1,7 @@
 ﻿using FoodDelivery.Application.DTOs.Common;
+using FoodDelivery.Application.DTOs.DishType;
 
-namespace FoodDelivery.Application.DTOs
+namespace FoodDelivery.Application.DTOs.Dish
 {
     public class DishDto : BaseDto
     {

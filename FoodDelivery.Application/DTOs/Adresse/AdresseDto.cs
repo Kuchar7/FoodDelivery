@@ -1,6 +1,6 @@
 ﻿using FoodDelivery.Application.DTOs.Common;
 
-namespace FoodDelivery.Application.DTOs
+namespace FoodDelivery.Application.DTOs.Adresse
 {
     public class AdresseDto : BaseDto
     {

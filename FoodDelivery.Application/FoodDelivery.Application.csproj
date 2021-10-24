@@ -13,8 +13,4 @@
     <ProjectReference Include="..\FoodDelivery.Domain\FoodDelivery.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\Restaurants\Handlers\Commands\" />
-  </ItemGroup>
-
 </Project>

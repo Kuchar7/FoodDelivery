@@ -2,6 +2,7 @@
 using FoodDelivery.Application.Contracts.Persistence;
 using FoodDelivery.Application.DTOs.Restaurant;
 using FoodDelivery.Application.Features.Restaurants.Requests;
+using FoodDelivery.Application.Features.Restaurants.Requests.Queries;
 using MediatR;
 using System;
 using System.Collections.Generic;
