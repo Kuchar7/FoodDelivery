@@ -6,7 +6,7 @@ using System.Text;
 
 namespace FoodDelivery.Application.DTOs.Restaurant
 {
-    public class CreateRestaurantDto : IRestaurantDto
+    public class UpdateRestaurantDto : BaseDto, IRestaurantDto
     {
         public string Name { get; set; }
         public string Description { get; set; }
