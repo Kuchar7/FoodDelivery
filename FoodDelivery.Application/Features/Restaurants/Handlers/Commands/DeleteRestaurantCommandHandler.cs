@@ -1,5 +1,5 @@
 ﻿using FoodDelivery.Application.Contracts.Persistence;
-using FoodDelivery.Application.Exception;
+using FoodDelivery.Application.Exceptions;
 using FoodDelivery.Application.Features.Restaurants.Requests.Commands;
 using FoodDelivery.Domain.Entities;
 using MediatR;

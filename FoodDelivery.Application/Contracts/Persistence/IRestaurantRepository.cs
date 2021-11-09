@@ -8,6 +8,5 @@ namespace FoodDelivery.Application.Contracts.Persistence
 {
     public interface IRestaurantRepository : IGenericRepository<Restaurant>
     {
-        Task<bool> Exists(int Id);
     }
 }

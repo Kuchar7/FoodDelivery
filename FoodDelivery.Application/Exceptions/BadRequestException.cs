@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace FoodDelivery.Application.Exception
+namespace FoodDelivery.Application.Exceptions
 {
     public class BadRequestException : ApplicationException
     {
