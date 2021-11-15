@@ -16,6 +16,6 @@ namespace FoodDelivery.Application.DTOs.Restaurant
         public AdresseDto Adresse { get; set; }
         public decimal RestaurantRate { get; set; }
         public List<DishDto> Dishes { get; set; }
-        public List<CuisineDto> CuisinesTypes { get; set; }
+        public List<CuisineTypeDto> CuisinesTypes { get; set; }
     }
 }

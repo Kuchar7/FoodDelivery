@@ -2,9 +2,9 @@
 
 namespace FoodDelivery.Application.DTOs.Cuisine
 {
-    public class CuisineDto : BaseDto
+    public class CuisineTypeDto : BaseDto
     {
         public string Name { get; set; }
-        public string Description { get; set; }
+        //public string Description { get; set; }
     }
 }

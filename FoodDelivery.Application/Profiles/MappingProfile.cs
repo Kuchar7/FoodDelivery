@@ -21,9 +21,10 @@ namespace FoodDelivery.Application.Profiles
             #endregion
             CreateMap<Adresse, AdresseDto>().ReverseMap();
             CreateMap<Dish, DishDto>().ReverseMap();
-            CreateMap<CuisineType, CuisineDto>().ReverseMap();
+            CreateMap<CuisineType, CuisineTypeDto>().ReverseMap();
             CreateMap<DishType, DishTypeDto>().ReverseMap();
             CreateMap<CreateRestaurantDto, RestaurantDto>();
+            CreateMap<CuisineType, CuisineTypeDto>().ReverseMap();
         }
     }
 }

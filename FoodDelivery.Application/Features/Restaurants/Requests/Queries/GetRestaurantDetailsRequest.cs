@@ -8,6 +8,10 @@ namespace FoodDelivery.Application.Features.Restaurants.Requests.Queries
 {
     public class GetRestaurantDetailsRequest : IRequest<RestaurantDto>
     {
+        public GetRestaurantDetailsRequest(int id)
+        {
+            this.Id = id;
+        }
         public int Id { get; set; }
     }
 }
