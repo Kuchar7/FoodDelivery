@@ -1,12 +1,13 @@
 ﻿using FoodDelivery.Domain.Common;
+using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace FoodDelivery.Domain.Entities
 {
-    public class DishType : BaseEntity
+    public class OrderStatus : BaseEntity
     {
         public string Name { get; set; }
-        public List<Dish> Dishes { get; set; }
-
+        public List<Order> Orders { get; set; }
     }
 }

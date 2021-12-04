@@ -1,5 +1,6 @@
 ﻿using FoodDelivery.Domain.Common;
 using FoodDelivery.Domain.Entities;
+using FoodDelivery.Persistence.Configurations.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -35,8 +36,14 @@ namespace FoodDelivery.Persistence
 
         public DbSet<Restaurant> Restaurants { get; set; }
         public DbSet<Dish> Dishes { get; set; }
-        public DbSet<Adresse> Adresses { get; set; }
         public DbSet<DishType> DishTypes { get; set; }
         public DbSet<CuisineType> CuisineTypes { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Manager> Managers { get; set; }
+        public DbSet<DeliveryMan> DeliveryMen { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDish> OrderDishes { get; set; }
+        public DbSet<OrderStatus> OrderStatuses { get; set; }
+        public DbSet<RestaurantRating> RestaurantRatings { get; set; }
     }
 }

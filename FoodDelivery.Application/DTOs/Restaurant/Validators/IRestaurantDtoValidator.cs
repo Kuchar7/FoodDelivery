@@ -22,32 +22,29 @@ namespace FoodDelivery.Application.DTOs.Restaurant.Validators
                 .NotEmpty().WithMessage("{PropertyName} is required.")
                 .MaximumLength(100).WithMessage("{PropertyName} must not exceed {ComparisionValue} characters.");
 
-            RuleFor(p => p.Adresse.Country)
-                .NotEmpty().WithMessage("{PropertyName} is required.")
-                .MaximumLength(100).WithMessage("{PropertyName} must not exceed {ComparisionValue} characters.");
 
-            RuleFor(p => p.Adresse.Province)
+            RuleFor(p => p.Province)
             .NotEmpty().WithMessage("{PropertyName} is required.")
             .MaximumLength(100).WithMessage("{PropertyName} must not exceed {ComparisionValue} characters.");
 
-            RuleFor(p => p.Adresse.Street)
+            RuleFor(p => p.Street)
             .NotEmpty().WithMessage("{PropertyName} is required.")
             .MaximumLength(100).WithMessage("{PropertyName} must not exceed {ComparisionValue} characters.");
 
-            RuleFor(p => p.Adresse.PostalCode)
+            RuleFor(p => p.PostalCode)
             .NotEmpty().WithMessage("{PropertyName} is required.")
             .Matches("[0-9]{2}-[0-9]{3}").WithMessage("Wrong format for postal code.");
 
-            RuleFor(p => p.CuisinesTypesId)
-                .NotNull().WithMessage("{PropertyName} is required.");
+            //RuleFor(p => p.CuisinesTypesId)
+            //    .NotNull().WithMessage("{PropertyName} is required.");
 
-            RuleForEach(p => p.CuisinesTypesId)
-                .MustAsync(async (id, token) =>
-                {
-                    var cuisineType = await _restaurantRepository.Exists(id);
-                    return cuisineType;
-                })
-                .WithMessage("{PropertyName} deos not exists.");
+            //RuleForEach(p => p.CuisinesTypesId)
+            //    .MustAsync(async (id, token) =>
+            //    {
+            //        var cuisineType = await _restaurantRepository.Exists(id);
+            //        return cuisineType;
+            //    })
+            //    .WithMessage("{PropertyName} deos not exists.");
 
         }
     }
