@@ -1,5 +1,4 @@
-﻿using FoodDelivery.Application.DTOs.Adresse;
-using FoodDelivery.Application.DTOs.Common;
+﻿using FoodDelivery.Application.DTOs.Common;
 using FoodDelivery.Application.DTOs.Cuisine;
 using FoodDelivery.Application.DTOs.Dish;
 using System;
@@ -12,8 +11,11 @@ namespace FoodDelivery.Application.DTOs.Restaurant
     {
         public string Name { get; set; }
         public string Description { get; set; }
-        public int AdresseId { get; set; }
-        public AdresseDto Adresse { get; set; }
+        public string Province { get; set; }
+        public string City { get; set; }
+        public string PostalCode { get; set; }
+        public string Street { get; set; }
+        public string HouseNumber { get; set; }
         public decimal RestaurantRate { get; set; }
         public List<DishDto> Dishes { get; set; }
         public List<CuisineTypeDto> CuisinesTypes { get; set; }

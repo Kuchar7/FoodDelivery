@@ -18,12 +18,12 @@ using Xunit;
 
 namespace FoodDelivery.Application.UnitTests.CuisineTypes.Query
 {
-    public class GetCuisineTypesListRequestTest
+    public class GetCuisineTypesListRequestHandlerTest
     {
         private readonly IMapper _mapper;
         private readonly Mock<ICuisineTypeRepository> _mockRepo;
 
-        public GetCuisineTypesListRequestTest()
+        public GetCuisineTypesListRequestHandlerTest()
         {
             _mockRepo = MockCuisineTypeRepository.GetCuisineTypeRepository();
             var mapperConfig = new MapperConfiguration(c =>

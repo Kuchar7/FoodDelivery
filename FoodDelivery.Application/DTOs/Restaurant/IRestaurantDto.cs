@@ -1,5 +1,4 @@
-﻿using FoodDelivery.Application.DTOs.Adresse;
-using FoodDelivery.Application.DTOs.Cuisine;
+﻿using FoodDelivery.Application.DTOs.Cuisine;
 using System;
 using System.Collections.Generic;
 using System.Text;
