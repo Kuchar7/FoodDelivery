@@ -42,20 +42,20 @@ namespace FoodDelivery.Application.Features.Restaurants.Handlers.Commands
             var newRestaurant = _mapper.Map<Restaurant>(request.RestaurantDto);
             await _restaurantRepository.Add(newRestaurant);
 
-            var email = new Email
-            {
-                To = "example@org.com",
-                Body = $"Your restaurant {newRestaurant.Name} was added.",
-                Subject = "New restaurant added."
-            };
-            try
-            {
-                await _emailSender.SendEmail(email);
-            }
-            catch (Exception ex)
-            {
+            //var email = new Email
+            //{
+            //    To = "example@org.com",
+            //    Body = $"Your restaurant {newRestaurant.Name} was added.",
+            //    Subject = "New restaurant added."
+            //};
+            //try
+            //{
+            //    await _emailSender.SendEmail(email);
+            //}
+            //catch (Exception ex)
+            //{
 
-            }
+            //}
 
             return newRestaurant.Id;
         }

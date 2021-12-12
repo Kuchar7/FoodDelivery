@@ -1,3 +1,4 @@
+using FoodDelivery.Api.Middleware;
 using FoodDelivery.Application;
 using FoodDelivery.Infrastructure;
 using FoodDelivery.Persistence;
@@ -55,7 +56,8 @@ namespace FoodDelivery.Api
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "FoodDelivery.Api v1"));
             }
-
+            app.UseMiddleware<ExceptionMiddleware>();
+            
             app.UseHttpsRedirection();
 
             app.UseRouting();
