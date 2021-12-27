@@ -4,7 +4,7 @@ using FoodDelivery.Application.DTOs.Cuisine;
 using FoodDelivery.Application.Features.CuisineTypes.Handlers.Queries;
 using FoodDelivery.Application.Features.CuisineTypes.Requests.Queries;
 using FoodDelivery.Application.Profiles;
-using FoodDelivery.Application.UnitTests.Mocks;
+using FoodDelivery.Application.UnitTests.Mock;
 using FoodDelivery.Domain.Entities;
 using Moq;
 using Shouldly;

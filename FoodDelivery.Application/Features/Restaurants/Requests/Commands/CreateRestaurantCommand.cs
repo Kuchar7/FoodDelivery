@@ -8,6 +8,6 @@ namespace FoodDelivery.Application.Features.Restaurants.Requests.Commands
 {
     public class CreateRestaurantCommand : IRequest<int>
     {
-        public CreateRestaurantDto RestaurantDto { get; set; }
+        public CreateRestaurantDto CreateRestaurantDto { get; set; }
     }
 }

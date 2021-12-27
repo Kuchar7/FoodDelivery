@@ -42,7 +42,7 @@ namespace FoodDelivery.Api.Controllers
         [HttpPost]
         public async Task<ActionResult> Post ([FromBody] CreateRestaurantDto restaurant)
         {
-            var newRestaurantId = await _mediator.Send(new CreateRestaurantCommand { RestaurantDto = restaurant });
+            var newRestaurantId = await _mediator.Send(new CreateRestaurantCommand { CreateRestaurantDto = restaurant });
             return Created($"api/restaurants/{newRestaurantId}", null);
         }
 

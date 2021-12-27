@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FoodDelivery.Application.UnitTests.Mocks
+namespace FoodDelivery.Application.UnitTests.Mock
 {
     public static class MockCuisineTypeRepository
     {

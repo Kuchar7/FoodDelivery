@@ -22,24 +22,23 @@ namespace FoodDelivery.Application.Features.Restaurants.Handlers.Commands
         private readonly IRestaurantRepository _restaurantRepository;
         private readonly IEmailSender _emailSender;
 
-        public CreateRestaurantCommandHandler(IMapper mapper, IRestaurantRepository restaurantRepository, IEmailSender emailSender)
+        public CreateRestaurantCommandHandler(IMapper mapper, IRestaurantRepository restaurantRepository/*, IEmailSender emailSender*/)
         {
             _mapper = mapper;
             _restaurantRepository = restaurantRepository;
-            _emailSender = emailSender;
+            //_emailSender = emailSender;
         }
         public async Task<int> Handle(CreateRestaurantCommand request, CancellationToken cancellationToken)
         {
             var validator = new CreateRestaurantDtoValidator(_restaurantRepository);
 
-            var validationResult = await validator.ValidateAsync(request.RestaurantDto);
+            var validationResult = await validator.ValidateAsync(request.CreateRestaurantDto);
 
             if (!validationResult.IsValid)
-            {
                 throw new ValidationException(validationResult);
-            }
+            
 
-            var newRestaurant = _mapper.Map<Restaurant>(request.RestaurantDto);
+            var newRestaurant = _mapper.Map<Restaurant>(request.CreateRestaurantDto);
             await _restaurantRepository.Add(newRestaurant);
 
             //var email = new Email

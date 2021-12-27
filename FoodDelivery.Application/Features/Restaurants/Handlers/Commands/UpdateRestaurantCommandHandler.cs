@@ -29,6 +29,8 @@ namespace FoodDelivery.Application.Features.Restaurants.Handlers.Commands
             if (!validatorResult.IsValid)
                 throw new ValidationException(validatorResult);
             var restaurant = await _restaurantRepository.Get(request.RestaurantDto.Id);
+            if (restaurant == null)
+                throw new NotFoundException(nameof(restaurant), request.RestaurantDto.Id);
             _mapper.Map(request.RestaurantDto, restaurant);
             await _restaurantRepository.Update(restaurant);
             return Unit.Value;

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FoodDelivery.Application.UnitTests.Mocks
+namespace FoodDelivery.Application.UnitTests.Mock
 {
     public static class MockRestaurantRepository
     {
@@ -17,7 +17,7 @@ namespace FoodDelivery.Application.UnitTests.Mocks
             {
                 new Restaurant
                 {
-                    Id = 1,
+                    Id = 0,
                     Name = "TestRestaurant1",
                     City = "TestCity1",
                     Description = "TestDescription1",
@@ -94,7 +94,7 @@ namespace FoodDelivery.Application.UnitTests.Mocks
                 },
                 new Restaurant
                 {
-                    Id = 2,
+                    Id = 1,
                     Name = "TestRestaurant2",
                     City = "TestCity2",
                     Description = "TestDescription2",
@@ -174,6 +174,11 @@ namespace FoodDelivery.Application.UnitTests.Mocks
 
             var mockRepo = new Mock<IRestaurantRepository>();
             mockRepo.Setup(m => m.GetAll()).ReturnsAsync(restaurants);
+            mockRepo.Setup(m => m.Add(It.IsAny<Restaurant>())).ReturnsAsync((Restaurant restaurant) =>
+            {
+                restaurants.Add(restaurant);
+                return restaurant;
+            });
 
             return mockRepo;
         }
