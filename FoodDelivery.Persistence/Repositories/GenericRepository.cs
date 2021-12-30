@@ -31,7 +31,9 @@ namespace FoodDelivery.Persistence.Repositories
         public async Task<bool> Exists(int id)
         {
             var entity = await Get(id);
-            return entity != null;
+            if (entity != null)
+                return true;
+            return false;
         }
 
         public async Task<T> Get(int id)

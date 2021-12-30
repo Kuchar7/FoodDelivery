@@ -17,7 +17,7 @@ namespace FoodDelivery.Application.UnitTests.Mock
             {
                 new Restaurant
                 {
-                    Id = 0,
+                    Id = 1,
                     Name = "TestRestaurant1",
                     City = "TestCity1",
                     Description = "TestDescription1",
@@ -172,8 +172,15 @@ namespace FoodDelivery.Application.UnitTests.Mock
 
             };
 
+            var listOfRestaurantIds = new List<int>();
+
+
             var mockRepo = new Mock<IRestaurantRepository>();
             mockRepo.Setup(m => m.GetAll()).ReturnsAsync(restaurants);
+            //mockRepo.Setup(m => m.Exists(It.IsIn<>)).ReturnsAsync(true);
+            mockRepo.Setup(m => m.Exists(It.IsIn(1))).ReturnsAsync(true);
+            
+
             mockRepo.Setup(m => m.Add(It.IsAny<Restaurant>())).ReturnsAsync((Restaurant restaurant) =>
             {
                 restaurants.Add(restaurant);

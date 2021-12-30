@@ -27,6 +27,7 @@
 
   <ItemGroup>
     <Folder Include="CuisineTypes\Command\" />
+    <Folder Include="Dishes\Command\" />
   </ItemGroup>
 
 </Project>

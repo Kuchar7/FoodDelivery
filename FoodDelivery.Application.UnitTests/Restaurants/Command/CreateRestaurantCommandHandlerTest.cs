@@ -74,7 +74,7 @@ namespace FoodDelivery.Application.UnitTests.Restaurants.Command
         public async Task CreateRestaurant_ThrowsException_WhenNameIsNull()
         {
             _createRestaurantDto.Name = "";
-            ValidationException ex = await Should.ThrowAsync<ValidationException>
+            await Should.ThrowAsync<ValidationException>
                 (
                 async () =>
                 await _handler.Handle(new CreateRestaurantCommand { CreateRestaurantDto = _createRestaurantDto }, CancellationToken.None)
