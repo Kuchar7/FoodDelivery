@@ -16,7 +16,6 @@
 
   <ItemGroup>
     <Folder Include="Features\Dishes\Handlers\Commands\" />
-    <Folder Include="Features\Dishes\Requests\Commands\" />
   </ItemGroup>
 
 </Project>

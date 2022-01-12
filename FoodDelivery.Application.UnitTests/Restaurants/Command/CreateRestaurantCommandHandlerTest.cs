@@ -22,7 +22,8 @@ namespace FoodDelivery.Application.UnitTests.Restaurants.Command
     public class CreateRestaurantCommandHandlerTest
     {
         private readonly IMapper _mapper;
-        private readonly Mock<IRestaurantRepository> _mockRepo;
+        private readonly Mock<IRestaurantRepository> _mockRepoRestaurant;
+        private readonly Mock<ICuisineTypeRepository> _mockRepoCuisineTypes;
         private readonly CreateRestaurantDto _createRestaurantDto;
         private readonly CreateRestaurantCommandHandler _handler;
 
@@ -34,8 +35,9 @@ namespace FoodDelivery.Application.UnitTests.Restaurants.Command
             });
 
             _mapper = mapperConfig.CreateMapper();
-            _mockRepo = MockRestaurantRepository.GetRestaurantRepository();
-            _handler = new CreateRestaurantCommandHandler(_mapper, _mockRepo.Object);
+            _mockRepoRestaurant = MockRestaurantRepository.GetRestaurantRepository();
+            _mockRepoCuisineTypes = MockCuisineTypeRepository.GetCuisineTypeRepository();
+            _handler = new CreateRestaurantCommandHandler(_mapper, _mockRepoRestaurant.Object, _mockRepoCuisineTypes.Object);
             _createRestaurantDto = new CreateRestaurantDto
             {
                 City = "Test City",
@@ -45,19 +47,7 @@ namespace FoodDelivery.Application.UnitTests.Restaurants.Command
                 Province = "Test Province",
                 Street = "Test Street",
                 HouseNumber = "1A",
-                CuisineTypeDtos = new List<DTOs.Cuisine.CuisineTypeDto>
-                {
-                    new CuisineTypeDto
-                    {
-                        Id = 1,
-                        Name = "Test Name1"
-                    },
-                    new CuisineTypeDto
-                    {
-                        Id = 2,
-                        Name = "Test Name2"
-                    }
-                }
+                CuisineTypesIds = new List<int> { 1, 2}
             };
         }
 
@@ -65,11 +55,19 @@ namespace FoodDelivery.Application.UnitTests.Restaurants.Command
         public async Task CreateRestaurant_AddRestaurant_WhenCreateRestaurantDtoIsValid()
         {
             var result = await _handler.Handle(new CreateRestaurantCommand { CreateRestaurantDto = _createRestaurantDto }, CancellationToken.None);
-            var restaurant = await _mockRepo.Object.GetAll();
+            var restaurants = await _mockRepoRestaurant.Object.GetAll();
             result.ShouldBeOfType<int>();
-            restaurant.Count.ShouldBe(3);
-        }
+            restaurants.Count.ShouldBe(3);
+            var restaurant = restaurants.First(x => x.Id == result);
+            restaurant.City.ShouldBeSameAs(_createRestaurantDto.City);
+            restaurant.Description.ShouldBeSameAs(_createRestaurantDto.Description);
+            restaurant.Name.ShouldBeSameAs(_createRestaurantDto.Name);
+            restaurant.PostalCode.ShouldBeSameAs(_createRestaurantDto.PostalCode);
+            restaurant.Province.ShouldBeSameAs(_createRestaurantDto.Province);
+            restaurant.HouseNumber.ShouldBeSameAs(_createRestaurantDto.HouseNumber);
+            restaurant.CuisinesTypes.Select(x => x.Id).ToList().ShouldBe(_createRestaurantDto.CuisineTypesIds);
 
+        }
         [Fact]
         public async Task CreateRestaurant_ThrowsException_WhenNameIsNull()
         {
@@ -80,7 +78,7 @@ namespace FoodDelivery.Application.UnitTests.Restaurants.Command
                 await _handler.Handle(new CreateRestaurantCommand { CreateRestaurantDto = _createRestaurantDto }, CancellationToken.None)
                 );
 
-            var restaurant = await _mockRepo.Object.GetAll();
+            var restaurant = await _mockRepoRestaurant.Object.GetAll();
 
             restaurant.Count.ShouldBe(2);
 

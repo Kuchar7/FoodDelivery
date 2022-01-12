@@ -132,13 +132,11 @@ namespace FoodDelivery.Application.UnitTests.Mock
                         new CuisineType
                         {
                             Id = 1,
-                            DateCreated = DateTime.Now,
                             Name = "Type1"
                         },
                         new CuisineType
                         {
                             Id = 2,
-                            DateCreated = DateTime.Now,
                             Name = "Type2"
                         }
                     },
@@ -178,7 +176,7 @@ namespace FoodDelivery.Application.UnitTests.Mock
             var mockRepo = new Mock<IRestaurantRepository>();
             mockRepo.Setup(m => m.GetAll()).ReturnsAsync(restaurants);
             //mockRepo.Setup(m => m.Exists(It.IsIn<>)).ReturnsAsync(true);
-            mockRepo.Setup(m => m.Exists(It.IsIn(1))).ReturnsAsync(true);
+            mockRepo.Setup(m => m.Exist(It.IsIn(1))).ReturnsAsync(true);
             
 
             mockRepo.Setup(m => m.Add(It.IsAny<Restaurant>())).ReturnsAsync((Restaurant restaurant) =>

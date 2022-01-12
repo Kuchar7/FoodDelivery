@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace FoodDelivery.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/restaurants")]
     [ApiController]
     public class RestaurantsController : ControllerBase
     {

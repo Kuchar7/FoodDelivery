@@ -29,6 +29,10 @@ namespace FoodDelivery.Persistence.Configurations.Entities
                 .IsRequired()
                 .HasMaxLength(60);
 
+            builder.Property(d => d.Description)
+                .IsRequired()
+                .HasMaxLength(150);
+
             builder.Property(d => d.Price)
                 .IsRequired()
                 .HasPrecision(9, 2);

@@ -13,21 +13,23 @@ namespace FoodDelivery.Application.UnitTests.Mock
     {
         public static Mock<ICuisineTypeRepository> GetCuisineTypeRepository()
         {
+            var ids = new List<int> { 1, 2 };
             var cuisineTypes = new List<CuisineType>
             {
                 new CuisineType
                 {
                     Id = 1,
-                    Name = "Polish"
+                    Name = "Type1"
                 },
                 new CuisineType
                 {
                     Id = 2,
-                    Name = "Georgian"
+                    Name = "Type2"
                 }
             };
             var mockRepo = new Mock<ICuisineTypeRepository>();
             mockRepo.Setup(r => r.GetAll()).ReturnsAsync(cuisineTypes);
+            mockRepo.Setup(r => r.GetCuisineTypesByIds(ids)).ReturnsAsync(cuisineTypes);
 
             mockRepo.Setup(r => r.Add(It.IsAny<CuisineType>())).ReturnsAsync((CuisineType cuisineType) =>
             {

@@ -24,7 +24,7 @@ namespace FoodDelivery.Application.Features.Restaurants.Handlers.Commands
         }
         public async Task<Unit> Handle(UpdateRestaurantCommand request, CancellationToken cancellationToken)
         {
-            var validator = new UpdateRestaurantDtoValidator(_restaurantRepository);
+            var validator = new UpdateRestaurantDtoValidator();
             var validatorResult = await validator.ValidateAsync(request.RestaurantDto);
             if (!validatorResult.IsValid)
                 throw new ValidationException(validatorResult);

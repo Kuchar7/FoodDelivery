@@ -28,7 +28,7 @@ namespace FoodDelivery.Persistence.Repositories
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task<bool> Exists(int id)
+        public async Task<bool> Exist(int id)
         {
             var entity = await Get(id);
             if (entity != null)

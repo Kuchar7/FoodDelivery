@@ -29,5 +29,6 @@ namespace FoodDelivery.Api.Controllers
             var dishes =  await _mediator.Send(new GetDishesListRequest { RestaurantId = restaurantId });
             return Ok(dishes);
         }
+
     }
 }

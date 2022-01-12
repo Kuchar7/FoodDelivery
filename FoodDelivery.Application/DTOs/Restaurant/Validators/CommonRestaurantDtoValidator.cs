@@ -6,13 +6,12 @@ using System.Text;
 
 namespace FoodDelivery.Application.DTOs.Restaurant.Validators
 {
-    public class IRestaurantDtoValidator : AbstractValidator<IRestaurantDto>
+    public class CommonRestaurantDtoValidator : AbstractValidator<IRestaurantDto>
     {
-        private readonly IRestaurantRepository _restaurantRepository;
 
-        public IRestaurantDtoValidator(IRestaurantRepository restaurantRepository)
+        public CommonRestaurantDtoValidator()
         {
-            _restaurantRepository = restaurantRepository;
+
 
             RuleFor(p => p.Name)
                 .NotEmpty().WithMessage("{PropertyName} is required.")

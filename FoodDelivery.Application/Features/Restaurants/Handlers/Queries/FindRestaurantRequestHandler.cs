@@ -22,7 +22,7 @@ namespace FoodDelivery.Application.Features.Restaurants.Handlers.Queries
 
         public async Task<Unit> Handle(FindRestaurantRequest request, CancellationToken cancellationToken)
         {
-            var isExist = await _restaurantRepository.Exists(request.RestaurantId);
+            var isExist = await _restaurantRepository.Exist(request.RestaurantId);
             if (isExist == false)
                 throw new NotFoundException(nameof(Restaurant), request.RestaurantId);
             return Unit.Value;

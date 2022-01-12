@@ -21,6 +21,7 @@ namespace FoodDelivery.Persistence
             services.AddScoped<IRestaurantRepository, RestaurantRepository>();
             services.AddScoped<ICuisineTypeRepository, CuisineTypeRepository>();
             services.AddScoped<IDishRepository, DishRepository>();
+            services.AddScoped<IDishTypeRepository, DishTypeRepository>();
 
             return services;
         }

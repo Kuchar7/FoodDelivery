@@ -18,6 +18,8 @@ namespace FoodDelivery.Application.Profiles
             #region Restaurant
             CreateMap<Restaurant, RestaurantDto>().ReverseMap();
             CreateMap<CreateRestaurantDto, Restaurant>();
+         
+            CreateMap<UpdateRestaurantDto, Restaurant>();
             #endregion
 
             #region CuisineType
@@ -26,6 +28,7 @@ namespace FoodDelivery.Application.Profiles
 
             #region Dish
             CreateMap<Dish, DishDto>().ReverseMap();
+            CreateMap<CreateDishDto, Dish>();
             #endregion
 
             #region DishType
