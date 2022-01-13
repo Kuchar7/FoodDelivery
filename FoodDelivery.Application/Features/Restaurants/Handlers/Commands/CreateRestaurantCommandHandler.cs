@@ -32,15 +32,17 @@ namespace FoodDelivery.Application.Features.Restaurants.Handlers.Commands
         }
         public async Task<int> Handle(CreateRestaurantCommand request, CancellationToken cancellationToken)
         {
-            var validator = new CreateRestaurantDtoValidator();
+            var validator = new CreateRestaurantDtoValidator(_cuisineTypeRepository);
 
             var validationResult = await validator.ValidateAsync(request.CreateRestaurantDto);
 
             if (!validationResult.IsValid)
                 throw new ValidationException(validationResult);
-            
+
+            var test = await _cuisineTypeRepository.GetAll();
             var newRestaurant = _mapper.Map<Restaurant>(request.CreateRestaurantDto);
-            newRestaurant.CuisinesTypes = new List<CuisineType>(await _cuisineTypeRepository.GetCuisineTypesByIds(request.CreateRestaurantDto.CuisineTypesIds));
+            var value = await _cuisineTypeRepository.GetCuisineTypesByIds(request.CreateRestaurantDto.CuisineTypesIds);
+            newRestaurant.CuisinesTypes = new List<CuisineType>(value);
 
             await _restaurantRepository.Add(newRestaurant);
 

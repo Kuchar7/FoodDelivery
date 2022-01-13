@@ -84,5 +84,22 @@ namespace FoodDelivery.Application.UnitTests.Restaurants.Command
 
         }
 
+        [Fact]
+        public async Task CreateRestaurant_ThrowsException_WhenCuisineTypeDoesNotExistForGivenId()
+        {
+            _createRestaurantDto.CuisineTypesIds.Clear();
+            _createRestaurantDto.CuisineTypesIds.Add(3);
+            await Should.ThrowAsync<ValidationException>
+                (
+                async () =>
+                await _handler.Handle(new CreateRestaurantCommand { CreateRestaurantDto = _createRestaurantDto }, CancellationToken.None)
+                );
+
+            var restaurant = await _mockRepoRestaurant.Object.GetAll();
+
+            restaurant.Count.ShouldBe(2);
+
+        }
+
     }
 }

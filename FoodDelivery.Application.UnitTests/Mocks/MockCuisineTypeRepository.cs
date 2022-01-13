@@ -29,6 +29,7 @@ namespace FoodDelivery.Application.UnitTests.Mock
             };
             var mockRepo = new Mock<ICuisineTypeRepository>();
             mockRepo.Setup(r => r.GetAll()).ReturnsAsync(cuisineTypes);
+            mockRepo.Setup(r => r.Exist(It.IsIn<int>(ids))).ReturnsAsync(true);
             mockRepo.Setup(r => r.GetCuisineTypesByIds(ids)).ReturnsAsync(cuisineTypes);
 
             mockRepo.Setup(r => r.Add(It.IsAny<CuisineType>())).ReturnsAsync((CuisineType cuisineType) =>
