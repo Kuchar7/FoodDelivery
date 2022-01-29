@@ -13,18 +13,18 @@ using System.Threading.Tasks;
 
 namespace FoodDelivery.Application.Features.Restaurants.Handlers.Queries
 {
-    public class GetRestaurantDetailsRequestHandler : IRequestHandler<GetRestaurantDetailsRequest, RestaurantDto>
+    public class GetRestaurantRequestHandler : IRequestHandler<GetRestaurantRequest, RestaurantDto>
     {
         private readonly IRestaurantRepository _restaurantRepository;
         private readonly IMapper _mapper;
 
-        public GetRestaurantDetailsRequestHandler(IRestaurantRepository restaurantRepository, IMapper mapper)
+        public GetRestaurantRequestHandler(IRestaurantRepository restaurantRepository, IMapper mapper)
         {
             _restaurantRepository = restaurantRepository;
             _mapper = mapper;
         }
 
-        public async Task<RestaurantDto> Handle(GetRestaurantDetailsRequest request, CancellationToken cancellationToken)
+        public async Task<RestaurantDto> Handle(GetRestaurantRequest request, CancellationToken cancellationToken)
         {
             var restaurant = await _restaurantRepository.Get(request.Id);
             if (restaurant == null)

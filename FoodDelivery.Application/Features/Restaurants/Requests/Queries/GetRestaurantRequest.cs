@@ -6,9 +6,9 @@ using System.Text;
 
 namespace FoodDelivery.Application.Features.Restaurants.Requests.Queries
 {
-    public class GetRestaurantDetailsRequest : IRequest<RestaurantDto>
+    public class GetRestaurantRequest : IRequest<RestaurantDto>
     {
-        public GetRestaurantDetailsRequest(int id)
+        public GetRestaurantRequest(int id)
         {
             this.Id = id;
         }

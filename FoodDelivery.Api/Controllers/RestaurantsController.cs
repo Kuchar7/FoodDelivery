@@ -31,10 +31,10 @@ namespace FoodDelivery.Api.Controllers
         }
 
         // GET: api/restaurants/id
-        [HttpGet("{id}")]
-        public async Task<ActionResult<RestaurantDto>> Get(int id)
+        [HttpGet("{restaurantId}")]
+        public async Task<ActionResult<RestaurantDto>> Get(int restaurantId)
         {
-            var restaurant = await _mediator.Send(new GetRestaurantDetailsRequest(id));
+            var restaurant = await _mediator.Send(new GetRestaurantRequest(restaurantId));
             return Ok(restaurant);
         }
 

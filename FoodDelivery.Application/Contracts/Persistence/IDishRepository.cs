@@ -8,6 +8,7 @@ namespace FoodDelivery.Application.Contracts.Persistence
 {
     public interface IDishRepository : IGenericRepository<Dish>
     {
-        Task<List<Dish>> GetAllDishesByRestaurantId(int id);
+        Task<List<Dish>> GetDishes(int id);
+        Task<Dish> GetSpecificDish(int restaurantId, int dishId);
     }
 }

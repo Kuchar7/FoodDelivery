@@ -30,6 +30,15 @@ namespace FoodDelivery.Api.Controllers
             var dishes =  await _mediator.Send(new GetDishesListRequest { RestaurantId = restaurantId });
             return Ok(dishes);
         }
+
+        [HttpGet("{dishId}")]
+        public async Task<ActionResult<DishDto>> Get([FromRoute] int restaurantId, [FromRoute] int dishId)
+        {
+            await _mediator.Send(new FindRestaurantRequest { RestaurantId = restaurantId });
+            var dish = await _mediator.Send(new GetDishRequest { DishId = dishId, RestaurantId = restaurantId});
+            return Ok(dish);
+        }
+
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] CreateDishDto dishDto)
         {
