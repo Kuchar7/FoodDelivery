@@ -89,6 +89,7 @@ namespace FoodDelivery.Application.UnitTests.Restaurants.Command
         {
             _createRestaurantDto.CuisineTypesIds.Clear();
             _createRestaurantDto.CuisineTypesIds.Add(3);
+            _createRestaurantDto.CuisineTypesIds.Add(5);
             await Should.ThrowAsync<ValidationException>
                 (
                 async () =>

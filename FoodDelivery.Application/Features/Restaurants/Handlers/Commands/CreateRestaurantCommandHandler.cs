@@ -21,14 +21,11 @@ namespace FoodDelivery.Application.Features.Restaurants.Handlers.Commands
         private readonly IMapper _mapper;
         private readonly IRestaurantRepository _restaurantRepository;
         private readonly ICuisineTypeRepository _cuisineTypeRepository;
-        private readonly IEmailSender _emailSender;
 
-        public CreateRestaurantCommandHandler(IMapper mapper, IRestaurantRepository restaurantRepository, ICuisineTypeRepository cuisineTypeRepository/*, IEmailSender emailSender*/)
+        public CreateRestaurantCommandHandler(IMapper mapper, IRestaurantRepository restaurantRepository, ICuisineTypeRepository cuisineTypeRepository)
         {
             _mapper = mapper;
             _restaurantRepository = restaurantRepository;
-            _cuisineTypeRepository = cuisineTypeRepository;
-            //_emailSender = emailSender;
         }
         public async Task<int> Handle(CreateRestaurantCommand request, CancellationToken cancellationToken)
         {
@@ -39,27 +36,11 @@ namespace FoodDelivery.Application.Features.Restaurants.Handlers.Commands
             if (!validationResult.IsValid)
                 throw new ValidationException(validationResult);
 
-            var test = await _cuisineTypeRepository.GetAll();
             var newRestaurant = _mapper.Map<Restaurant>(request.CreateRestaurantDto);
-            var value = await _cuisineTypeRepository.GetCuisineTypesByIds(request.CreateRestaurantDto.CuisineTypesIds);
-            newRestaurant.CuisinesTypes = new List<CuisineType>(value);
+            newRestaurant.CuisinesTypes = new List<CuisineType>(await _cuisineTypeRepository.GetCuisineTypesByIds(request.CreateRestaurantDto.CuisineTypesIds));
 
             await _restaurantRepository.Add(newRestaurant);
 
-            //var email = new Email
-            //{
-            //    To = "example@org.com",
-            //    Body = $"Your restaurant {newRestaurant.Name} was added.",
-            //    Subject = "New restaurant added."
-            //};
-            //try
-            //{
-            //    await _emailSender.SendEmail(email);
-            //}
-            //catch (Exception ex)
-            //{
-
-            //}
 
             return newRestaurant.Id;
         }

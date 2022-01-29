@@ -16,15 +16,17 @@ namespace FoodDelivery.Application.Features.Restaurants.Handlers.Commands
     {
         private readonly IMapper _mapper;
         private readonly IRestaurantRepository _restaurantRepository;
+        private readonly ICuisineTypeRepository _cuisineTypeRepository;
 
-        public UpdateRestaurantCommandHandler(IMapper mapper, IRestaurantRepository restaurantRepository)
+        public UpdateRestaurantCommandHandler(IMapper mapper, IRestaurantRepository restaurantRepository, ICuisineTypeRepository cuisineTypeRepository)
         {
+            _cuisineTypeRepository = cuisineTypeRepository;
             _mapper = mapper;
             _restaurantRepository = restaurantRepository;
         }
         public async Task<Unit> Handle(UpdateRestaurantCommand request, CancellationToken cancellationToken)
         {
-            var validator = new UpdateRestaurantDtoValidator();
+            var validator = new UpdateRestaurantDtoValidator(_cuisineTypeRepository);
             var validatorResult = await validator.ValidateAsync(request.RestaurantDto);
             if (!validatorResult.IsValid)
                 throw new ValidationException(validatorResult);

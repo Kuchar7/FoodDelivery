@@ -1,4 +1,5 @@
 ﻿using FoodDelivery.Application.DTOs.Dish;
+using FoodDelivery.Application.Features.Dishes.Requests.Commands;
 using FoodDelivery.Application.Features.Dishes.Requests.Queries;
 using FoodDelivery.Application.Features.Restaurants.Requests.Queries;
 using MediatR;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace FoodDelivery.Api.Controllers
 {
-    [Route("api/restaurant/{restaurantId}/dish")]
+    [Route("api/restaurant/{restaurantId}/dishes")]
     [ApiController]
     public class DishesController : ControllerBase
     {
@@ -28,6 +29,12 @@ namespace FoodDelivery.Api.Controllers
             await _mediator.Send(new FindRestaurantRequest { RestaurantId = restaurantId });
             var dishes =  await _mediator.Send(new GetDishesListRequest { RestaurantId = restaurantId });
             return Ok(dishes);
+        }
+        [HttpPost]
+        public async Task<ActionResult> Post([FromBody] CreateDishDto dishDto)
+        {
+            var dishId = await _mediator.Send(new CreateDishCommand { DishDto = dishDto });
+            return Created($"api/restaurant/{dishDto.RestaurantId}/dishes/{dishId}", null);
         }
 
     }

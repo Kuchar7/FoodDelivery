@@ -17,7 +17,6 @@ namespace FoodDelivery.Application.Features.Dishes.Handlers.Queries
     {
         private readonly IMapper _mapper;
         private readonly IDishRepository _dishRepository;
-        private readonly IRestaurantRepository _restaurantRepository;
         public GetDishesListRequestHandler(IMapper mapper, IDishRepository dishRepository)
         {
             _mapper = mapper;

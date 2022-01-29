@@ -15,6 +15,6 @@ namespace FoodDelivery.Application.DTOs.Restaurant
         public string PostalCode { get; set; }
         public string Street { get; set; }
         public string HouseNumber { get; set; }
-        public List<int> CuisineTypesIds{ get; set; }
+        public List<int> CuisineTypesIds { get; set; }
     }
 }

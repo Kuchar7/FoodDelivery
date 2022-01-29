@@ -8,10 +8,12 @@ namespace FoodDelivery.Application.DTOs.Restaurant.Validators
 {
     public class UpdateRestaurantDtoValidator : AbstractValidator<UpdateRestaurantDto>
     {
-
-        public UpdateRestaurantDtoValidator()
+        private readonly ICuisineTypeRepository _cuisineTypeRepository;
+        public UpdateRestaurantDtoValidator(ICuisineTypeRepository cuisineTypeRepository)
         {
-            Include(new CommonRestaurantDtoValidator());
+            _cuisineTypeRepository = cuisineTypeRepository;
+
+            Include(new CommonRestaurantDtoValidator(_cuisineTypeRepository));
             RuleFor(p => p.Id).NotNull().WithMessage("{PropertyName} must be exists");
         }
     }

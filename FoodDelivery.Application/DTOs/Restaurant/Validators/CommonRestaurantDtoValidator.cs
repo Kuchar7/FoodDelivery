@@ -8,10 +8,11 @@ namespace FoodDelivery.Application.DTOs.Restaurant.Validators
 {
     public class CommonRestaurantDtoValidator : AbstractValidator<IRestaurantDto>
     {
+        private readonly ICuisineTypeRepository _cuisineTypeRepository;
 
-        public CommonRestaurantDtoValidator()
+        public CommonRestaurantDtoValidator(ICuisineTypeRepository cuisineTypeRepository)
         {
-
+            _cuisineTypeRepository = cuisineTypeRepository;
 
             RuleFor(p => p.Name)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
@@ -34,16 +35,15 @@ namespace FoodDelivery.Application.DTOs.Restaurant.Validators
             .NotEmpty().WithMessage("{PropertyName} is required.")
             .Matches("[0-9]{2}-[0-9]{3}").WithMessage("Wrong format for postal code.");
 
-            //RuleFor(p => p.CuisinesTypesId)
-            //    .NotNull().WithMessage("{PropertyName} is required.");
+            RuleFor(p => p.CuisineTypesIds)
+               .NotNull().WithMessage("{PropertyName} is required.");
 
-            //RuleForEach(p => p.CuisinesTypesId)
-            //    .MustAsync(async (id, token) =>
-            //    {
-            //        var cuisineType = await _restaurantRepository.Exists(id);
-            //        return cuisineType;
-            //    })
-            //    .WithMessage("{PropertyName} deos not exists.");
+            RuleForEach(p => p.CuisineTypesIds)
+                .MustAsync(async (id, token) =>
+                {
+                    var exist = await _cuisineTypeRepository.Exist(id);
+                    return exist;
+                }).WithMessage("Cuisine type doesn't exist for the given ID ({PropertyValue}).");
 
         }
     }
