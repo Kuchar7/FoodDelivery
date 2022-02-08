@@ -18,7 +18,7 @@ namespace FoodDelivery.Persistence.Configurations.Entities
             //    .OnDelete(DeleteBehavior.Cascade);
 
             builder.HasIndex(x => x.Name);
-
+            builder.HasKey(x => x.Id);
             builder.Property(x => x.Name)
                 .IsRequired()
                 .HasMaxLength(30);

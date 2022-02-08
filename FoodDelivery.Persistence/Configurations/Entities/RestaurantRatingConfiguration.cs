@@ -11,6 +11,7 @@ namespace FoodDelivery.Persistence.Configurations.Entities
     {
         public void Configure(EntityTypeBuilder<RestaurantRating> builder)
         {
+            builder.HasKey(x => x.Id);
             builder.Property(r => r.Rating)
                 .IsRequired();
 

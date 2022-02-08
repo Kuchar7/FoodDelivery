@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace FoodDelivery.Persistence.Migrations
 {
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -129,6 +129,7 @@ namespace FoodDelivery.Persistence.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
                     DishTypeId = table.Column<int>(type: "int", nullable: true),
                     Price = table.Column<decimal>(type: "decimal(9,2)", precision: 9, scale: 2, nullable: false),
                     RestaurantId = table.Column<int>(type: "int", nullable: false),
@@ -361,21 +362,9 @@ namespace FoodDelivery.Persistence.Migrations
                 column: "DishTypeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Dishes_Name",
-                table: "Dishes",
-                column: "Name",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Dishes_RestaurantId",
                 table: "Dishes",
                 column: "RestaurantId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_DishTypes_Name",
-                table: "DishTypes",
-                column: "Name",
-                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_ManagerRestaurant_RestaurantsId",

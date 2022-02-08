@@ -14,7 +14,7 @@ namespace FoodDelivery.Persistence.Configurations.Entities
             //builder.HasMany(r => r.Dishes)
             //    .WithOne(d => d.Restaurant)
             //    .HasForeignKey(d => d.RestaurantId);
-
+            builder.HasKey(x => x.Id);
             builder.Property(x => x.Name)
                 .IsRequired()
                 .HasMaxLength(50);

@@ -26,6 +26,7 @@ namespace FoodDelivery.Application.Features.Restaurants.Handlers.Commands
         {
             _mapper = mapper;
             _restaurantRepository = restaurantRepository;
+            _cuisineTypeRepository = cuisineTypeRepository;
         }
         public async Task<int> Handle(CreateRestaurantCommand request, CancellationToken cancellationToken)
         {

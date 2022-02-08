@@ -12,7 +12,7 @@ namespace FoodDelivery.Persistence.Configurations.Entities
         public void Configure(EntityTypeBuilder<CuisineType> builder)
         {
             builder.HasIndex(x => x.Name).IsUnique();
-
+            builder.HasKey(x => x.Id);
             builder.Property(x => x.Name)
                 .IsRequired()
                 .HasMaxLength(40);

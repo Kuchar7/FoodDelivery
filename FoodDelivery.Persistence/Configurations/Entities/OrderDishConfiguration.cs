@@ -18,7 +18,7 @@ namespace FoodDelivery.Persistence.Configurations.Entities
             //builder.HasOne(o => o.Dish)
             //   .WithMany(d => d.OrderDishes)
             //   .HasForeignKey(o => o.DishId);
-
+            builder.HasKey(x => x.Id);
             builder.Property(o => o.Quantity).IsRequired();
 
         }

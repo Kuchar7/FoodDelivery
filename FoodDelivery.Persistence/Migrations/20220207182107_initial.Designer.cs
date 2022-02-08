@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FoodDelivery.Persistence.Migrations
 {
     [DbContext(typeof(FoodDeliveryDbContext))]
-    [Migration("20211230211646_AddDescriptionForDish")]
-    partial class AddDescriptionForDish
+    [Migration("20220207182107_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -188,9 +188,6 @@ namespace FoodDelivery.Persistence.Migrations
 
                     b.HasIndex("DishTypeId");
 
-                    b.HasIndex("Name")
-                        .IsUnique();
-
                     b.HasIndex("RestaurantId");
 
                     b.ToTable("Dishes");
@@ -215,9 +212,6 @@ namespace FoodDelivery.Persistence.Migrations
                         .HasColumnType("nvarchar(40)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("Name")
-                        .IsUnique();
 
                     b.ToTable("DishTypes");
                 });

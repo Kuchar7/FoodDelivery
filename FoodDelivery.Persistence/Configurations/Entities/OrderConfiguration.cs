@@ -22,7 +22,7 @@ namespace FoodDelivery.Persistence.Configurations.Entities
             //builder.HasOne(o => o.User)
             //    .WithMany(u => u.Orders)
             //    .HasForeignKey(o => o.UserId);
-
+            builder.HasKey(x => x.Id);
             builder.Property(o => o.Note).HasMaxLength(250);
 
             builder.Property(o => o.OrderStatusId)

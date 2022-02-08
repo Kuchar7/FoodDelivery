@@ -32,9 +32,9 @@ namespace FoodDelivery.Api.Controllers
 
         // GET: api/restaurants/id
         [HttpGet("{restaurantId}")]
-        public async Task<ActionResult<RestaurantDto>> Get(int restaurantId)
+        public async Task<ActionResult<RestaurantDetailsDto>> Get(int restaurantId)
         {
-            var restaurant = await _mediator.Send(new GetRestaurantRequest(restaurantId));
+            var restaurant = await _mediator.Send(new GetRestaurantDetailsRequest(restaurantId));
             return Ok(restaurant);
         }
 

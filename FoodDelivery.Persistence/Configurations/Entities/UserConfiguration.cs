@@ -11,8 +11,8 @@ namespace FoodDelivery.Persistence.Configurations.Entities
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            builder.HasIndex(x => new { x.EmailAddress }).IsUnique();
-
+            builder.HasIndex(x => new { x.EmailAddress}).IsUnique();
+            builder.HasKey(x => x.Id);
             builder.Property(x => x.FirstName)
                 .IsRequired()
                 .HasMaxLength(50);

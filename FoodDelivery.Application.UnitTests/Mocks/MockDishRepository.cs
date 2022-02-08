@@ -48,7 +48,7 @@ namespace FoodDelivery.Application.UnitTests.Mocks
             int selectedRestaurantId = 1;
 
             var mockRepo = new Mock<IDishRepository>();
-            mockRepo.Setup(m => m.GetAllDishesByRestaurantId(selectedRestaurantId)).ReturnsAsync(dishes.Where(d => d.RestaurantId == selectedRestaurantId).ToList);
+            //mockRepo.Setup(m => m.GetSpecificDish(selectedRestaurantId)).ReturnsAsync(dishes.Where(d => d.RestaurantId == selectedRestaurantId).ToList);
 
             return mockRepo;
         }

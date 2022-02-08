@@ -37,11 +37,11 @@ namespace FoodDelivery.Application.UnitTests.Restaurants.Command
  
         }
 
-        [Fact]
-        public async Task UpdateRestaurant_AddRestaurant_WhenUpdateRestaurantDtoIsValid()
-        {
+        //[Fact]
+        //public async Task UpdateRestaurant_AddRestaurant_WhenUpdateRestaurantDtoIsValid()
+        //{
 
-        }
+        //}
 
 
     }

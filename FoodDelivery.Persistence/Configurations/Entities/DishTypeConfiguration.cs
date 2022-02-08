@@ -12,8 +12,8 @@ namespace FoodDelivery.Persistence.Configurations.Entities
         public void Configure(EntityTypeBuilder<DishType> builder)
         {
 
-            builder.HasIndex(x => x.Name).IsUnique();
-
+            //builder.HasIndex(x => x.Name).IsUnique();
+            builder.HasKey(x => x.Id);
             builder.Property(x => x.Name)
                 .IsRequired()
                 .HasMaxLength(40);

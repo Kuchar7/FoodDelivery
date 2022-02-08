@@ -11,7 +11,7 @@ namespace FoodDelivery.Persistence.Configurations.Entities
     {
         public void Configure(EntityTypeBuilder<Dish> builder)
         {
-            builder.HasIndex(d => d.Name).IsUnique();
+
 
             //builder.HasOne(d => d.DishType)
             //    .WithMany(t => t.Dishes)
@@ -24,7 +24,7 @@ namespace FoodDelivery.Persistence.Configurations.Entities
             //    .IsRequired()
             //    .OnDelete(DeleteBehavior.Cascade);
 
-
+            builder.HasKey(x => x.Id);
             builder.Property(d => d.Name)
                 .IsRequired()
                 .HasMaxLength(60);

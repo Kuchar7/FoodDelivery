@@ -186,9 +186,6 @@ namespace FoodDelivery.Persistence.Migrations
 
                     b.HasIndex("DishTypeId");
 
-                    b.HasIndex("Name")
-                        .IsUnique();
-
                     b.HasIndex("RestaurantId");
 
                     b.ToTable("Dishes");
@@ -213,9 +210,6 @@ namespace FoodDelivery.Persistence.Migrations
                         .HasColumnType("nvarchar(40)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("Name")
-                        .IsUnique();
 
                     b.ToTable("DishTypes");
                 });
