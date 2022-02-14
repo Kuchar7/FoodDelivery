@@ -26,7 +26,7 @@ namespace FoodDelivery.Application.DTOs.Dish.Validators
 
             RuleFor(d => d.Price)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
-                .ScalePrecision(9, 2);
+                .ScalePrecision(2, 6);
 
             RuleFor(d => d.RestaurantId)
                 .NotEmpty().WithMessage("{PropertyName} is required.")

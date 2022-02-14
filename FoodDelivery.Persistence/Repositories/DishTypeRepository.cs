@@ -6,7 +6,7 @@ using System.Text;
 
 namespace FoodDelivery.Persistence.Repositories
 {
-    public class DishTypeRepository : GenericRepository<Dish>, IDishTypeRepository
+    public class DishTypeRepository : GenericRepository<DishType>, IDishTypeRepository
     {
         private readonly FoodDeliveryDbContext _dbContext;
 
@@ -14,5 +14,6 @@ namespace FoodDelivery.Persistence.Repositories
         {
             _dbContext = dbContext;
         }
+
     }
 }

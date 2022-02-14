@@ -13,9 +13,10 @@ namespace FoodDelivery.Application.DTOs.Dish.Validators
 
         public CreateDishDtoValidator(IRestaurantRepository restaurantRepository, IDishTypeRepository dishTypeRepository)
         {
-            Include(new CommonDishDtoValidator(_restaurantRepository, _dishTypeRepository));
             _restaurantRepository = restaurantRepository;
             _dishTypeRepository = dishTypeRepository;
+            Include(new CommonDishDtoValidator(_restaurantRepository, _dishTypeRepository));
+            
         }
 
     }

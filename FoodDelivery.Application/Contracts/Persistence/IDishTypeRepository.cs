@@ -5,7 +5,8 @@ using System.Text;
 
 namespace FoodDelivery.Application.Contracts.Persistence
 {
-    public interface IDishTypeRepository : IGenericRepository<Dish>
+    public interface IDishTypeRepository : IGenericRepository<DishType>
     {
+
     }
 }

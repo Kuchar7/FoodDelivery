@@ -20,12 +20,16 @@ namespace FoodDelivery.Persistence.Repositories
 
         public async Task<List<Dish>> GetDishes(int id)
         {
-            return await _dbContext.Dishes.Where(r => r.RestaurantId == id).ToListAsync();
+            return await _dbContext.Dishes
+                .Include(x => x.DishType)
+                .Where(r => r.RestaurantId == id)
+                .ToListAsync();
         }
 
         public async Task<Dish> GetSpecificDish(int restaurantId, int dishId)
         {
             return await _dbContext.Dishes.Where(d => d.RestaurantId == restaurantId && d.Id == dishId).FirstOrDefaultAsync();
         }
+
     }
 }
