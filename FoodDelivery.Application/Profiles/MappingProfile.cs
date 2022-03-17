@@ -30,6 +30,7 @@ namespace FoodDelivery.Application.Profiles
             #region Dish
             CreateMap<Dish, DishDto>().ReverseMap();
             CreateMap<CreateDishDto, Dish>();
+            CreateMap<UpdateDishDto, Dish>();
             #endregion
 
             #region DishType
