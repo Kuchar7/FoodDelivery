@@ -31,21 +31,21 @@ namespace FoodDelivery.Application.UnitTests.Dishes.Queries
             });
             _mapper = mapperConfig.CreateMapper();
         }
-        [Fact]
-        public async Task GetDishesList_GetListOfDishes_WhenDishesExist()
-        {
-            var handler = new GetDishesListRequestHandler(_mapper, _mockRepoDish.Object);
-            var result = await handler.Handle(new GetDishesListRequest { RestaurantId = 1}, CancellationToken.None);
-            result.ShouldBeOfType<List<DishDto>>();
-            result.Count.ShouldBe(2);
-        }
-        [Fact]
-        public async Task GetDishesList_GetEmptyList_WhenDishesNotExist()
-        {
-            var handler = new GetDishesListRequestHandler(_mapper, _mockRepoDish.Object);
-            var result = await handler.Handle(new GetDishesListRequest { RestaurantId = 2 }, CancellationToken.None);
-            result.ShouldBeOfType<List<DishDto>>();
-            result.Count.ShouldBe(0);
-        }
+        //[Fact]
+        //public async Task GetDishesList_GetListOfDishes_WhenDishesExist()
+        //{
+        //    var handler = new GetDishesListRequestHandler(_mapper, _mockRepoDish.Object);
+        //    var result = await handler.Handle(new GetDishesListRequest { RestaurantId = 1}, CancellationToken.None);
+        //    result.ShouldBeOfType<List<DishDto>>();
+        //    result.Count.ShouldBe(2);
+        //}
+        //[Fact]
+        //public async Task GetDishesList_GetEmptyList_WhenDishesNotExist()
+        //{
+        //    var handler = new GetDishesListRequestHandler(_mapper, _mockRepoDish.Object);
+        //    var result = await handler.Handle(new GetDishesListRequest { RestaurantId = 2 }, CancellationToken.None);
+        //    result.ShouldBeOfType<List<DishDto>>();
+        //    result.Count.ShouldBe(0);
+        //}
     }
 }

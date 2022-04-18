@@ -26,7 +26,6 @@ namespace FoodDelivery.Api.Controllers
         [HttpGet]
         public async Task<ActionResult<List<DishDto>>> Get([FromRoute] int restaurantId)
         {
-            await _mediator.Send(new FindRestaurantRequest { RestaurantId = restaurantId });
             var dishes =  await _mediator.Send(new GetDishesListRequest { RestaurantId = restaurantId });
             return Ok(dishes);
         }
@@ -34,7 +33,6 @@ namespace FoodDelivery.Api.Controllers
         [HttpGet("{dishId}")]
         public async Task<ActionResult<DishDto>> Get([FromRoute] int restaurantId, [FromRoute] int dishId)
         {
-            await _mediator.Send(new FindRestaurantRequest { RestaurantId = restaurantId });
             var dish = await _mediator.Send(new GetDishRequest { DishId = dishId, RestaurantId = restaurantId});
             return Ok(dish);
         }
