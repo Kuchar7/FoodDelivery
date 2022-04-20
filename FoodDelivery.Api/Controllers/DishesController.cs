@@ -36,13 +36,7 @@ namespace FoodDelivery.Api.Controllers
             var dish = await _mediator.Send(new GetDishRequest { DishId = dishId, RestaurantId = restaurantId});
             return Ok(dish);
         }
-        [HttpPut("{dishId}")]
-        public async Task<ActionResult> Put([FromBody] UpdateDishDto dishDto)
-        {
-            await _mediator.Send(new UpdateDishCommand { DishDto = dishDto });
-            return NoContent();
 
-        }
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] CreateDishDto dishDto)
         {
@@ -50,5 +44,18 @@ namespace FoodDelivery.Api.Controllers
             return Created($"api/restaurant/{dishDto.RestaurantId}/dishes/{dishId}", null);
         }
 
+        [HttpPut("{dishId}")]
+        public async Task<ActionResult> Put([FromBody] UpdateDishDto dishDto)
+        {
+            await _mediator.Send(new UpdateDishCommand { DishDto = dishDto });
+            return NoContent();
+        }
+
+        [HttpDelete("{dishId}")]
+        public async Task<ActionResult> Delete([FromRoute] int restaurantId, [FromRoute] int dishId)
+        {
+            await _mediator.Send(new DeleteDishCommand { DishId = dishId, RestaurantId = restaurantId});
+            return NoContent();
+        }
     }
 }
