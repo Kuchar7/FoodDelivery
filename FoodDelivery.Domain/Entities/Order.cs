@@ -11,8 +11,7 @@ namespace FoodDelivery.Domain.Entities
         public OrderStatus OrderStatus { get; set; }
         public string Note { get; set; }
         public List<OrderDish> OrderDishes { get; set; }
-        public int? UserId { get; set; }
-        public User User { get; set; }
+        public string UserId { get; set; }
         public int? DeliveryManId { get; set; }
         public DeliveryMan DeliveryMan { get; set; }
     }

@@ -38,7 +38,6 @@ namespace FoodDelivery.Persistence
         public DbSet<Dish> Dishes { get; set; }
         public DbSet<DishType> DishTypes { get; set; }
         public DbSet<CuisineType> CuisineTypes { get; set; }
-        public DbSet<User> Users { get; set; }
         public DbSet<Manager> Managers { get; set; }
         public DbSet<DeliveryMan> DeliveryMen { get; set; }
         public DbSet<Order> Orders { get; set; }

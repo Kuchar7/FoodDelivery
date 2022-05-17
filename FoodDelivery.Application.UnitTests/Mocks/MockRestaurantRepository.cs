@@ -31,21 +31,21 @@ namespace FoodDelivery.Application.UnitTests.Mock
                         new RestaurantRating
                         {
                             RestaurantId = 1,
-                            UserId = 1,
+                            UserId = "1",
                             DateCreated = DateTime.Now,
                             Rating = 4
                         },
                         new RestaurantRating
                         {
                             RestaurantId = 1,
-                            UserId = 2,
+                            UserId = "2",
                             DateCreated = DateTime.Now,
                             Rating = 5
                         },
                         new RestaurantRating
                         {
                             RestaurantId = 1,
-                            UserId = 3,
+                            UserId = "3",
                             DateCreated = DateTime.Now,
                             Rating = 4
                         }
@@ -71,7 +71,7 @@ namespace FoodDelivery.Application.UnitTests.Mock
                         {
                             Id = 1,
                             DateCreated = DateTime.Now,
-                            UserId = 4
+                            UserId = "4"
                         }
                     },
                     Dishes = new List<Dish>
@@ -108,21 +108,21 @@ namespace FoodDelivery.Application.UnitTests.Mock
                         new RestaurantRating
                         {
                             RestaurantId = 2,
-                            UserId = 1,
+                            UserId = "1",
                             DateCreated = DateTime.Now,
                             Rating = 2
                         },
                         new RestaurantRating
                         {
                             RestaurantId = 2,
-                            UserId = 2,
+                            UserId = "2",
                             DateCreated = DateTime.Now,
                             Rating = 1
                         },
                         new RestaurantRating
                         {
                             RestaurantId = 2,
-                            UserId = 3,
+                            UserId = "3",
                             DateCreated = DateTime.Now,
                             Rating = 2
                         }
@@ -146,7 +146,7 @@ namespace FoodDelivery.Application.UnitTests.Mock
                         {
                             Id = 1,
                             DateCreated = DateTime.Now,
-                            UserId = 4
+                            UserId = "4"
                         }
                     },
                     Dishes = new List<Dish>
