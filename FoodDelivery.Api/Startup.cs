@@ -1,5 +1,6 @@
 using FoodDelivery.Api.Middleware;
 using FoodDelivery.Application;
+using FoodDelivery.Identity;
 using FoodDelivery.Infrastructure;
 using FoodDelivery.Persistence;
 using Microsoft.AspNetCore.Builder;
@@ -33,6 +34,7 @@ namespace FoodDelivery.Api
             services.ConfigureApplicationServices();
             services.ConfigureInfrastructureServices(Configuration);
             services.ConfigurePersistenceServices(Configuration);
+            services.ConfigureIdentityServices(Configuration);
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -56,8 +58,11 @@ namespace FoodDelivery.Api
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "FoodDelivery.Api v1"));
             }
+
             app.UseMiddleware<ExceptionMiddleware>();
-            
+
+            app.UseAuthentication();
+
             app.UseHttpsRedirection();
 
             app.UseRouting();

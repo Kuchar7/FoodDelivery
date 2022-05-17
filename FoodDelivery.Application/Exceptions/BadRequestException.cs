@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FoodDelivery.Application.Exceptions
 {
-    public class BadRequestException : ApplicationException
+    public class BadRequestException : Exception
     {
         public BadRequestException(string message) : base(message)
         {

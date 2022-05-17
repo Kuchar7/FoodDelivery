@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FoodDelivery.Application\FoodDelivery.Application.csproj" />
+    <ProjectReference Include="..\FoodDelivery.Identity\FoodDelivery.Identity.csproj" />
     <ProjectReference Include="..\FoodDelivery.Infrastructure\FoodDelivery.Infrastructure.csproj" />
     <ProjectReference Include="..\FoodDelivery.Persistence\FoodDelivery.Persistence.csproj" />
   </ItemGroup>
