@@ -2,6 +2,7 @@
 using FoodDelivery.Application.Features.Restaurants.Requests.Commands;
 using FoodDelivery.Application.Features.Restaurants.Requests.Queries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -23,6 +24,7 @@ namespace FoodDelivery.Api.Controllers
         }
 
         // GET: api/restaurants
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<List<RestaurantDto>>> Get()
         {
